@@ -1,0 +1,126 @@
+.container-father {}
+
+.container-filter {
+    width: 20%;
+    margin: 10px;
+}
+
+.accordion-item {
+    border-radius: 5px;
+    background-color: #212529;
+    border: 2px solid #212529;
+}
+
+.accordion-header button {
+    color: black;
+    background-color: #FFA500;
+}
+
+.container-father {
+    display: flex;
+    flex-direction: row;
+}
+
+.centrado {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn-alive {
+    color: white;
+    background-color: green;
+}
+
+.btnes {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+}
+
+.btnes button {
+    margin: 10px;
+}
+
+.img-character {
+    height: 150px;
+}
+
+.img-character:hover {
+    filter: opacity(.5);
+}
+
+.btn-rickmorty {
+    color: #000;
+    background-color: #00FF00;
+}
+
+.btn-rickmorty:hover {
+    color: #000;
+    background-color: #FFA500;
+}
+
+.card-mod {
+    height: 425px;
+}
+
+.cardB-mod {
+    border-radius: 3px;
+    color: white;
+    background-color: #212529;
+}
+
+.portal-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.portal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 120%;
+    background: url('../../assets/images/rick_and_morty_portal.png') center center/cover;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.portal-active {
+    opacity: 1;
+}
+
+.img-character {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.status-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status-label.alive {
+    background-color: green;
+}
+
+.status-label.dead {
+    background-color: red;
+}
+
+.status-label.unknown {
+    background-color: gray;
+}

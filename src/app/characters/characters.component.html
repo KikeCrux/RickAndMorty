@@ -1,0 +1,121 @@
+<div class="container-father">
+    <div class="container-filter">
+        <br>
+
+        <div class="accordion" id="resetStatusAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="resetStatusHeader">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#resetStatusCollapse" aria-expanded="false" aria-controls="resetStatusCollapse">
+                        Reset
+                    </button>
+                </h2>
+                <div id="resetStatusCollapse" class="accordion-collapse collapse" aria-labelledby="resetStatusHeader"
+                    data-bs-parent="#resetStatusAccordion">
+                    <div class="accordion-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="btn btn-primary" (click)="filterByStatus('reset')">Reset</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="accordion" id="statusAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="statusHeader">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#statusCollapse" aria-expanded="false" aria-controls="statusCollapse">
+                        Status
+                    </button>
+                </h2>
+                <div id="statusCollapse" class="accordion-collapse collapse" aria-labelledby="statusHeader"
+                    data-bs-parent="#statusAccordion">
+                    <div class="accordion-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="btn btn-alive" (click)="filterByStatus('alive')">Alive</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-danger" (click)="filterByStatus('dead')">Dead</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-secondary" (click)="filterByStatus('unknown')">Unknown</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="accordion" id="genderAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="statusHeader">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#genderCollapse" aria-expanded="false" aria-controls="genderCollapse">
+                        Gender
+                    </button>
+                </h2>
+                <div id="genderCollapse" class="accordion-collapse collapse" aria-labelledby="genderHeader"
+                    data-bs-parent="#genderAccordion">
+                    <div class="accordion-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <button class="btn btn-alive" (click)="filterByGender('Male')">Male</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-danger" (click)="filterByGender('Female')">Female</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-secondary" (click)="filterByGender('unknown')">Unknown</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <br>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <div class="col" *ngFor="let character of filteredCharacters">
+                <div class="card card-mod mb-4">
+                    <div class="portal-container">
+                        <div class="portal" [ngClass]="{ 'portal-active': character.isPortalActive }"></div>
+                        <img [src]="character.image" class="card-img-top img-character" alt="{{ character.name }}">
+                        <div class="status-label {{ character.status | lowercase }}">{{ character.status }}</div>
+                    </div>
+                    <div class="card-body cardB-mod">
+                        <h5 class="card-title">{{ character.name }}</h5>
+                        <p class="card-text">Last location: {{ character.origin.name }}</p>
+                        <br>
+                        <div class="centrado">
+                            <a [routerLink]="['/characters', character.id]" class="btn btn-rickmorty"
+                                (mouseenter)="activatePortal(character)" (mouseleave)="deactivatePortal(character)">Get
+                                Schwifty</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btnes">
+            <button (click)="prevPage()" [disabled]="currentPage === 1" class="btn btn-rickmorty mr-2">Anterior</button>
+            <input type="number" [(ngModel)]="pageToGo" class="form-control mr-2" max="42"
+                placeholder="1-{{ totalPages }}">
+            <button type="button" (click)="goToPage()" class="btn btn-rickmorty mr-2">Ir</button>
+            <button (click)="nextPage()" [disabled]="currentPage === totalPages"
+                class="btn btn-rickmorty">Siguiente</button>
+        </div>
+
+        <br>
+        <br>
+    </div>
+</div>
